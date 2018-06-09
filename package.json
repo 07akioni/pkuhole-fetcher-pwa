@@ -1,0 +1,39 @@
+{
+  "name": "pkuhole-fetcher-pwa",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@material-ui/core": "^1.2.0",
+    "@material-ui/icons": "^1.1.0",
+    "@reach/router": "^1.0.7",
+    "axios": "^0.18.0",
+    "immer": "^1.3.1",
+    "rc-tween-one": "^1.8.1",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-redux": "^5.0.7",
+    "react-scripts": "1.1.4",
+    "react-transition-group": "^2.3.1",
+    "redux": "^4.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/q$": {
+      "target": "http://localhost:6080",
+      "secure": false
+    },
+    "/d$": {
+      "target": "http://localhost:6080",
+      "secure": false
+    },
+    "/s$": {
+      "target": "http://localhost:6080",
+      "secure": false
+    }
+  }
+}
