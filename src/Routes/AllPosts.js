@@ -46,11 +46,8 @@ class AllPosts extends Component {
   }
   handleScroll (event) {
     if (this.props.fromPid === -1 && this.props.fromPid === 0) return
-
-    if (this.containerDOM && this.selfDOM) {
-      if (this.containerDOM.scrollTop + this.containerDOM.clientHeight >= this.selfDOM.clientHeight - 44 && !this.props.loadingPosts) {
-        // console.log(this.selfDOM)
-        // console.log(this.containerDOM.scrollTop, this.containerDOM.clientHeight, this.containerDOM.scrollTop + this.containerDOM.clientHeight, this.selfDOM.clientHeight)
+    if (this.containerDOM) {
+      if (this.containerDOM.scrollTop + window.innerHeight >= this.containerDOM.clientHeight - 44 && !this.props.loadingPosts) {
         getNextPage()
       }
     }
@@ -71,7 +68,7 @@ class AllPosts extends Component {
     return (
       <div ref={ el => {
         this.selfDOM = el
-        this.containerDOM = document.scrollingElement
+        this.containerDOM = window.document.body
       } }>
         <RoutePadding />
         <div style={{ overflow: 'hidden' }}>
