@@ -6,6 +6,7 @@ import { CircularProgress, Typography, Divider } from '@material-ui/core'
 import Post from '../Components/Post'
 import Comment from '../Components/Comment'
 import TweenOne from 'rc-tween-one'
+import { RoutePadding, RouteBottomPadding } from '../Components/RouterPadding'
 
 /*
  *
@@ -33,6 +34,7 @@ class PostDetail extends Component {
   render () {
     return (
       <TweenOne animation={this.animation} style={this.tweenStyle}>
+      <RoutePadding />
         <Post post={this.props.head} />
         {
           this.props.loading ?
@@ -45,6 +47,7 @@ class PostDetail extends Component {
           </div> :
           <div>{this.mapBody2Comment()}</div>
         }
+        <RouteBottomPadding />
       </TweenOne>
     )
   }

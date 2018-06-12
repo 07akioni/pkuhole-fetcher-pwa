@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import Divider from '@material-ui/core/Divider'
 import { CircularProgress, Typography } from '@material-ui/core'
 import { connect } from 'react-redux'
 import Post from '../Components/Post'
 import { SET_CURRENT_TYPE, CLEAR_POSTS, SET_FROMPID } from '../Store/actionTypes'
 import { getNextPage } from '../Services'
+import { RoutePadding, RouteBottomPadding } from '../Components/RouterPadding'
 
 class DeletedPosts extends Component {
   componentDidMount () {

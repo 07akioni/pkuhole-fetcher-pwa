@@ -6,6 +6,7 @@ import { search as searchService } from '../Services'
 import { connect } from 'react-redux'
 import { CLEAR_SEARCH_POSTS, SET_DETAIL_HEAD, CLEAR_DETAIL, SET_SEARCH_KEYWORDS } from '../Store/actionTypes'
 import { navigate } from '@reach/router'
+import { RoutePadding, RouteBottomPadding } from '../Components/RouterPadding'
 
 let scrollTop = 0
 
@@ -66,33 +67,37 @@ class Search extends Component {
   }
   render () {
     return (
-      <div style={{ overflow: 'hidden' }} ref={ el => {
+      <div ref={ el => {
         this.selfDOM = el
         if (el) {
-          this.containerDOM = el.parentElement.parentElement
+          this.containerDOM = window.document.scrollingElement
         }
       } }>
-        <ListItem>
-          <div style={{ borderRadius: 2, position: 'relative', background: '#eeeeee', display: 'flex', width: '100%' }}>
-            <div style={{ width: 72, height: '100%', display: 'flex', position: 'absolute', alignItems: 'center', pointerEvents: 'none', justifyContent: 'center' }}><SearchIcon /></div>
-            <input style={{ border: 0, margin: 0, padding: '8px 8px 8px 72px', color: 'inherit', background: 'none', outline: 'none', flexGrow: '1' }} onChange={this.input} onKeyPress={this.search} value={this.props.keywords} />
-          </div>
-        </ListItem>
-        {
-          this.props.loading ?
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 8 }}>
-            <CircularProgress size={ 28 }/>
-          </div> :
-          null
-        }
-        { this.posts() }
-        {
-          this.props.posts.length > 300 ?
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 8 }}>
-            <Typography variant="body1">仅显示前 300 条搜索结果</Typography>
-          </div> :
-          null
-        }
+        <RoutePadding />
+        <div style={{ overflow: 'hidden' }}>
+          <ListItem>
+            <div style={{ borderRadius: 2, position: 'relative', background: '#eeeeee', display: 'flex', width: '100%' }}>
+              <div style={{ width: 72, height: '100%', display: 'flex', position: 'absolute', alignItems: 'center', pointerEvents: 'none', justifyContent: 'center' }}><SearchIcon /></div>
+              <input style={{ border: 0, margin: 0, padding: '8px 8px 8px 72px', color: 'inherit', background: 'none', outline: 'none', flexGrow: '1' }} onChange={this.input} onKeyPress={this.search} value={this.props.keywords} />
+            </div>
+          </ListItem>
+          {
+            this.props.loading ?
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 8 }}>
+              <CircularProgress size={ 28 }/>
+            </div> :
+            null
+          }
+          { this.posts() }
+          {
+            this.props.posts.length > 300 ?
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 8 }}>
+              <Typography variant="body1">仅显示前 300 条搜索结果</Typography>
+            </div> :
+            null
+          }
+        </div>
+        <RouteBottomPadding />
       </div>
     )
   }
