@@ -20,12 +20,11 @@ class AllPosts extends Component {
       this.props.initPid()
       getNextPage()
     }
+    this.handleScroll = this.handleScroll.bind(this)
   }
   componentDidMount () {
+    window.addEventListener('scroll', this.handleScroll)
     if (this.containerDOM) {
-      this.scrollListener = window.addEventListener('scroll', (e) => {
-        this.handleScroll()
-      })
       /*
        * restore scrollTop
        * not elegant at all
@@ -35,8 +34,8 @@ class AllPosts extends Component {
     } 
   }
   componentWillUnmount () {
+    window.removeEventListener('scroll', this.handleScroll)
     if (this.containerDOM) {
-      window.removeEventListener('scroll', this.scrollListener)
       /*
        * set scrollTop
        */
