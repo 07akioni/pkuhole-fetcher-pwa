@@ -36,7 +36,7 @@ class AllPosts extends Component {
   }
   componentWillUnmount () {
     if (this.containerDOM) {
-      this.containerDOM.removeEventListener('scroll', this.scrollListener)
+      window.removeEventListener('scroll', this.scrollListener)
       /*
        * set scrollTop
        */
